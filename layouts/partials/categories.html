@@ -1,6 +1,11 @@
 <h3 class="widget-title"><a href='{{ "categories/" | relURL }}'>分类</a></h3>
 <ul class="widget-list">
     {{ range .Site.Taxonomies.categories }}
-    <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>
+    <li>
+        <a href="{{ .Page.Permalink }}">
+            <span class="iconfont iconfont-category">&#xe622;</span>
+            {{ .Page.Title }} ({{ .Count }})
+        </a>
+    </li>
     {{ end }}
 </ul>

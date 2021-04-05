@@ -12,7 +12,12 @@
         <div class="post-meta">
             <span>|</span>
             {{ range . }}
-            <span class="meta-category"><a href='{{ "categories/" | relURL }}{{ . | urlize }}'>{{ . }}</a></span>
+            <span class="meta-category">
+                <a href='{{ "categories/" | relURL }}{{ . | urlize }}'>
+                <i class="iconfont iconfont-postmeta">&#xe615;</i>
+                {{ . }}
+                </a>
+            </span>
             {{ end }}
         </div>
         {{ end }}
@@ -22,6 +27,13 @@
                     阅读</span></span>
         </div>
         {{ end }}
+
+        {{if .Site.Params.counts}}
+        <div class="post-meta">
+            <span>|</span>
+            <span>共{{.WordCount}}字, 阅读约{{.ReadingTime}}分钟</span>
+        </div>
+        {{end}}
         {{ if .Params.toc }}
         <div class="clear" style="display: none">
             <div class="toc-article">
@@ -31,7 +43,9 @@
         {{ end }}
         <div class="post-content">
             {{ .Content }}
+            {{partial "series_directory" .}}
         </div>
+
 
         {{ partial "copyright" .}}
 
@@ -51,4 +65,5 @@
     </article>
     {{ partial "comments" . }}
 </div>
+
 {{ end }}

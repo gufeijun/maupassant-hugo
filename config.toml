@@ -1,4 +1,4 @@
-baseURL = "https://gufeijun.com/"
+baseURL = "/"
 languageCode = "zh-CN"
 title = "辜飞俊的博客"
 theme = "maupassant"
@@ -25,7 +25,6 @@ summaryLength = 140
   busuanzi = true #启用不算子网页统计
   googleAd = ""  #ca-pub-xxxxxxxxxxxxxx
   localSearch = true # 启用本地搜索
-  MyHost = "https://www.gufeijun.com"
 
   # 全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能
   toc = true  # 是否开启目录
@@ -85,15 +84,10 @@ summaryLength = 140
     weight = 3
 
   [[menu.main]]
-    name = "系列"
-    url="/series"
-    weight = 4
-
-  [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
-    weight = 5
+    weight = 4
 
 [taxonomies]
     tag = "tags"

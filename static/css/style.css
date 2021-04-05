@@ -110,32 +110,17 @@ pre {
 code {
     display: inline-block;
 }
+
 blockquote {
     display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 40px;
-    margin-inline-end: 40px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 2.5em 0;
-    padding: 0 0 0 50px;
-    color: #555;
-    border-left: none;
+    margin: 1.1em 0;
+    padding: 1.5em 2em .5em 2em;
+    border: 1px dashed #ddd;
+    border-left: 0.5em solid #ddd;
+    line-height: 1.5;
+    box-shadow: 3px 3px 0 #eaeaea;
 }
-blockquote::before{
-    content: "\201C";
-    display: block;
-    font-family: times;
-    font-style: normal;
-    font-size: 48px;
-    color: #444;
-    font-weight: bold;
-    line-height: 30px;
-    margin-left: -50px;
-    position: absolute; 
-}
-  
+
 /**
 h1, h2, h3 {
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -286,6 +271,11 @@ textarea {
     font-size: 1.5em;
     font-weight: bold;
 }
+
+.post .post-title a{
+    font-size: 1.2em;
+}
+
 .post-title a, .keyword {
     color:#555;
 }
@@ -364,14 +354,33 @@ textarea {
 .post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6 {
     color: #ba3925;
 }
+
+.post-content h2{
+    text-align: center;
+    color: black;
+    background: linear-gradient(#fff 50%, #cf4029 50%);
+}
+
 .page-content{
     padding-top: 40px;
 }
 .post-content h3,.post-content h2{
     margin: 1.4em 0 1.1em;
-    border-bottom: 1px solid #eee;
     overflow: hidden;
 }
+
+.post-content h3{
+    border-left: 4px solid #ba3925;
+    padding-left: 6px;
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
 .post-content pre{
     padding: 1em;
 }
@@ -621,7 +630,7 @@ textarea.textarea {
     padding:10px 40px 10px 0;
 }
 .post-content h2, .comment-content h2 {
-    font-size:1.28571em;
+    font-size:1.4em;
 }
 .post-content img, .comment-content img {
     max-width:100%;
@@ -1115,4 +1124,55 @@ table tr th, table tr td {
 .github-badge .bg-lightgrey,.github-badge .bg-lightgray {
   background-color: #9f9f9f !important; 
 }
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('../fonts/iconfont.eot');
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/iconfont.woff2') format('woff2'),
+        url('../fonts/iconfont.woff') format('woff'),
+        url('../fonts/iconfont.ttf') format('truetype'),
+        url('../fonts/iconfont.svg#iconfont') format('svg');
+  }
   
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 20px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: -10%;
+}
+
+.widget-list .iconfont-article{
+    color: rgb(3, 169, 244);
+}
+
+.widget-list .iconfont-category{
+    color: rgb(80, 144, 241);
+}
+
+.tagcloud .iconfont-tag{
+    font-size: 15px;
+    color:rgb(145, 180, 255);
+}
+
+.iconfont-postmeta{
+    color: blue;
+}
+
+.iconfont-series{
+    color: blue;
+}
+
+#footer .iconfont{
+    padding-left: 20px;
+}
+
+h1{
+    font-size: 2em;
+}
+
+.series_link{
+    font-size: 1.2em;
+}

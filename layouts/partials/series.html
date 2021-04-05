@@ -1,0 +1,20 @@
+{{if .Site.Params.series_open}}
+<h3 class="widget-title">系列</h3>
+<ul class="widget-list">
+    {{range $name,$taxonomy:=.Site.Taxonomies.series}}
+        {{$series_name := $name}}
+        {{$series_path := (printf "/series/%s/index.html" (urlize $name))}}
+        {{$series_page := site.GetPage $series_path}}
+
+        {{ if $series_page}}
+            {{ $series_name = $series_page.Title}}
+        {{end}}
+
+        <li><a href="{{ $series_path }}">
+            <i class="iconfont iconfont-series">&#xe648;</i>
+            {{ $series_name }} ({{ $taxonomy.Count }})
+
+        </a></li>
+    {{end}}
+</ul>
+{{end}}

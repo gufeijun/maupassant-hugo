@@ -1,0 +1,21 @@
+{{if .Site.Params.series_open}}
+    {{$series_name:=.Params.series}}
+    {{range $key,$value := .Site.Taxonomies.series}}
+        {{if eq $series_name $key}}
+            <h2>系列目录</h2>
+            <ul>
+                {{$1:=0}}
+                {{range $1,$2:=sort $value "Date" "asc"}}
+                    {{if eq .Title $.Title}}
+                    <li class="series_link" style="position: relative;">
+                        <i class="iconfont iconfont-arrow" style="position:absolute;left: -6%;color: rgb(38, 77, 228);">&#xe680;</i>
+                        {{printf "%02d" (add $1 1) }}、{{.Title}}
+                    </li>
+                    {{else}}
+                    <li class="series_link">{{printf "%02d" (add $1 1)}}、<a href="{{.Permalink}}">{{.Title}}</a></li>
+                    {{end}}
+                {{end}}
+            </ul>
+        {{end}}
+    {{end}}
+{{end}}

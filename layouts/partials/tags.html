@@ -1,6 +1,9 @@
 <h3 class="widget-title"><a href='{{ "tags/" | relURL }}'>标签</a></h3>
 <div class="tagcloud">
     {{ range .Site.Taxonomies.tags }}
-    <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+    <a href="{{ .Page.Permalink }}">
+        <span class="iconfont iconfont-tag">&#xe61c;</span>
+        {{ .Page.Title }}
+    </a>
     {{ end }}
 </div>
