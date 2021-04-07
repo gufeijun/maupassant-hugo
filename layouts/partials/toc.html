@@ -1,0 +1,165 @@
+{{if .Site.Params.toc}}
+
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_2466059_nt8cfy5z5tl.css">
+<style>
+  #log ul {
+    padding: 0;
+  }
+  #log .log-ul {
+    height: 340px;
+    width: 165px;
+    padding: 10px 0;
+    overflow: scroll;     
+    list-style: none;
+    border: 1px solid lightgray;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 10px 5px lightslategray;
+  }
+  #log .log-ul a {
+    transition: all ease-out 0.3s;
+  }
+  #log .log-ul::-webkit-scrollbar {
+    width: 4px;
+    height: 0px;
+  }
+  #log .log-ul::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #d1d4db;
+  }
+  #log li {
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;     
+    color: #000;
+    border-radius: 10px;
+  }
+  #log li ul {
+    border-radius: 10px;
+  }
+  #log a {
+    padding: 10px;
+    display: inline-block;
+    width: 130px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+  #log a:hover {
+    background-color: rgb(44, 136, 194);
+    color: #fff;
+    cursor: pointer;
+  }
+  #body #log {
+    position: fixed;
+    top: 10rem;
+    right: 0;
+    z-index: 2;
+  }
+  #body #log .btn {
+    margin-right: 2rem;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+  }
+  #body #log ul, 
+  #hide {
+    display: none;
+  }
+  #hide {
+    position: relative;
+    bottom: 5px;
+    left: 57.5px;
+  }
+  #log .iconfont {
+    color: rgb(44, 136, 194);
+    font-size: 34px;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    box-shadow: 5px 6px 5px lightblue;
+    cursor: pointer;
+}
+</style>
+
+<div id="log">
+  <div class="btn" id="show"><i class="iconfont icon-jiantou"></i></div>
+  <ul class="log-ul"></ul>
+  <div class="btn" id="hide"><i class="iconfont icon-jiantouarrow503"></i></div>
+</div>
+
+<script>
+    window.onload=function(){
+        function act() {
+          let list = document.getElementById("log").getElementsByTagName("ul");
+          let log = document.getElementById("log");
+          log.addEventListener('click', function(e) {
+            if(e.target.className == "iconfont icon-jiantou") {
+              log.getElementsByClassName("btn")[0].style.display = "none";
+              for (let i = 0; i < list.length; i++) {
+                list[i].style.display = "block";
+              }
+              log.getElementsByClassName("btn")[1].style.display = "block";
+            } else if(e.target.className == "iconfont icon-jiantouarrow503") {
+              log.getElementsByClassName("btn")[1].style.display = "none";
+              for (let i = 0; i < list.length; i++) {
+                list[i].style.display = "none";
+              }
+              log.getElementsByClassName("btn")[0].style.display = "block";
+            };
+          })
+        }
+        function nav() {
+          let cont = document.getElementsByClassName("post-content");
+          let h2Arr = cont[0].getElementsByTagName("h2");
+          let list = document.getElementById("log").getElementsByClassName("log-ul")[0];
+          let child = cont[0].childNodes;
+          let children = [];
+          // simple children
+          for (let i in child) {
+            if(child[i].tagName){
+              children.push(child[i]);
+            }
+          }
+          let h3Arr = [];
+          let flag = 1;
+          // h3 belong to h2
+          for(let i = 0; i < h2Arr.length; i++) {
+            let arr = [];
+            for (let j = flag; j < children.length; j++) {
+              if (children[j].localName == "h3") {
+                arr.push(children[j]);
+              }
+              if (children[j].localName == "h2") {
+                flag = j+1;
+                break;
+              }
+            }
+            h3Arr.push(arr);
+          }
+          // h2,h3 tag
+          for (let i = 0; i < h3Arr.length; i++){
+            let wrap = document.createElement("ul");
+            for (let j = 0; j < h3Arr[i].length; j++) {
+              let node = document.createElement("li");
+              let jump = document.createElement("a");
+              jump.innerHTML = (i + 1) + "." + (j + 1) + "&ensp;" + h3Arr[i][j].innerHTML;
+              jump.href = "#"+h3Arr[i][j].innerHTML;
+              node.appendChild(jump);
+              wrap.appendChild(node);
+            }
+            let node = document.createElement("li");
+            let jump = document.createElement("a");
+            jump.innerHTML = i + 1 + "&ensp;" + h2Arr[i].innerHTML;
+            jump.href = "#"+h2Arr[i].innerHTML;
+            node.appendChild(jump);
+            node.appendChild(wrap);
+            list.appendChild(node);
+          }
+        }
+        nav();act();
+    }
+</script>
+{{end}}
