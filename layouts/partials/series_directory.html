@@ -2,7 +2,7 @@
     {{$series_name:=.Params.series}}
     {{range $key,$value := .Site.Taxonomies.series}}
         {{if eq $series_name $key}}
-            <h2>系列目录</h2>
+            <h2 id="系列目录">系列目录</h2>
             <ul>
                 {{$1:=0}}
                 {{range $1,$2:=sort $value "Date" "asc"}}
