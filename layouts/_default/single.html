@@ -39,6 +39,9 @@
             {{partial "series_directory" .}}
         </div>
 
+{{if .Site.Params.toc}}
+    {{partial "toc" .}}
+{{end}}
 
         {{ partial "copyright" .}}
 

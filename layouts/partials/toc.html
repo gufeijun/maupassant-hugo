@@ -91,75 +91,73 @@
 </div>
 
 <script>
-    window.onload=function(){
-        function act() {
-          let list = document.getElementById("log").getElementsByTagName("ul");
-          let log = document.getElementById("log");
-          log.addEventListener('click', function(e) {
-            if(e.target.className == "iconfont icon-jiantou") {
-              log.getElementsByClassName("btn")[0].style.display = "none";
-              for (let i = 0; i < list.length; i++) {
-                list[i].style.display = "block";
-              }
-              log.getElementsByClassName("btn")[1].style.display = "block";
-            } else if(e.target.className == "iconfont icon-jiantouarrow503") {
-              log.getElementsByClassName("btn")[1].style.display = "none";
-              for (let i = 0; i < list.length; i++) {
-                list[i].style.display = "none";
-              }
-              log.getElementsByClassName("btn")[0].style.display = "block";
-            };
-          })
+  function act() {
+    let list = document.getElementById("log").getElementsByTagName("ul");
+    let log = document.getElementById("log");
+    log.addEventListener('click', function(e) {
+      if(e.target.className == "iconfont icon-jiantou") {
+        log.getElementsByClassName("btn")[0].style.display = "none";
+        for (let i = 0; i < list.length; i++) {
+          list[i].style.display = "block";
         }
-        function nav() {
-          let cont = document.getElementsByClassName("post-content");
-          let h2Arr = cont[0].getElementsByTagName("h2");
-          let list = document.getElementById("log").getElementsByClassName("log-ul")[0];
-          let child = cont[0].childNodes;
-          let children = [];
-          // simple children
-          for (let i in child) {
-            if(child[i].tagName){
-              children.push(child[i]);
-            }
-          }
-          let h3Arr = [];
-          let flag = 1;
-          // h3 belong to h2
-          for(let i = 0; i < h2Arr.length; i++) {
-            let arr = [];
-            for (let j = flag; j < children.length; j++) {
-              if (children[j].localName == "h3") {
-                arr.push(children[j]);
-              }
-              if (children[j].localName == "h2") {
-                flag = j+1;
-                break;
-              }
-            }
-            h3Arr.push(arr);
-          }
-          // h2,h3 tag
-          for (let i = 0; i < h3Arr.length; i++){
-            let wrap = document.createElement("ul");
-            for (let j = 0; j < h3Arr[i].length; j++) {
-              let node = document.createElement("li");
-              let jump = document.createElement("a");
-              jump.innerHTML = (i + 1) + "." + (j + 1) + "&ensp;" + h3Arr[i][j].innerHTML;
-              jump.href = "#"+h3Arr[i][j].innerHTML;
-              node.appendChild(jump);
-              wrap.appendChild(node);
-            }
-            let node = document.createElement("li");
-            let jump = document.createElement("a");
-            jump.innerHTML = i + 1 + "&ensp;" + h2Arr[i].innerHTML;
-            jump.href = "#"+h2Arr[i].innerHTML;
-            node.appendChild(jump);
-            node.appendChild(wrap);
-            list.appendChild(node);
-          }
+        log.getElementsByClassName("btn")[1].style.display = "block";
+      } else if(e.target.className == "iconfont icon-jiantouarrow503") {
+        log.getElementsByClassName("btn")[1].style.display = "none";
+        for (let i = 0; i < list.length; i++) {
+          list[i].style.display = "none";
         }
-        nav();act();
+        log.getElementsByClassName("btn")[0].style.display = "block";
+      };
+    })
+  }
+  function nav() {
+    let cont = document.getElementsByClassName("post-content");
+    let h2Arr = cont[0].getElementsByTagName("h2");
+    let list = document.getElementById("log").getElementsByClassName("log-ul")[0];
+    let child = cont[0].childNodes;
+    let children = [];
+    // simple children
+    for (let i in child) {
+      if(child[i].tagName){
+        children.push(child[i]);
+      }
     }
+    let h3Arr = [];
+    let flag = 1;
+    // h3 belong to h2
+    for(let i = 0; i < h2Arr.length; i++) {
+      let arr = [];
+      for (let j = flag; j < children.length; j++) {
+        if (children[j].localName == "h3") {
+          arr.push(children[j]);
+        }
+        if (children[j].localName == "h2") {
+          flag = j+1;
+          break;
+        }
+      }
+      h3Arr.push(arr);
+    }
+    // h2,h3 tag
+    for (let i = 0; i < h3Arr.length; i++){
+      let wrap = document.createElement("ul");
+      for (let j = 0; j < h3Arr[i].length; j++) {
+        let node = document.createElement("li");
+        let jump = document.createElement("a");
+        jump.innerHTML = (i + 1) + "." + (j + 1) + "&ensp;" + h3Arr[i][j].innerHTML;
+        jump.href = "#"+h3Arr[i][j].innerHTML;
+        node.appendChild(jump);
+        wrap.appendChild(node);
+      }
+      let node = document.createElement("li");
+      let jump = document.createElement("a");
+      jump.innerHTML = i + 1 + "&ensp;" + h2Arr[i].innerHTML;
+      jump.href = "#"+h2Arr[i].innerHTML;
+      node.appendChild(jump);
+      node.appendChild(wrap);
+      list.appendChild(node);
+    }
+  }
+  nav();act();
 </script>
 {{end}}
