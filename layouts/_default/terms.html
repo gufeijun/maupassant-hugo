@@ -10,10 +10,10 @@
     {{ range .Data.Terms.ByCount }}
     <h2><a href="{{ path.Join $.Data.Plural .Term | urlize | absLangURL }}">{{ .Term }}</a> ({{ .Count }})</h2>
     <ul class="listing">
-        {{ range .Pages }}
+        {{ range $1,$2:=sort .Pages "Date" "asc"}}
         <li>
-            <span class="date">{{ .Date.Format "2006/01/02" }}</span>
-            <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+            <span class="date">{{ $2.Date.Format "2006/01/02" }}</span>
+            <a href="{{ .Permalink }}" title="{{ .Title }}">{{ $2.Title }}</a>
         </li>
         {{ end }}
     </ul>
