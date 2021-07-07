@@ -56,6 +56,12 @@ summaryLength = 140
 ##  url = "https://www.aliyun.com/acts/limit-buy?userCode=jdg9oj97"
 ##  img = "https://img.alicdn.com/tfs/TB1hblJl7Y2gK0jSZFgXXc5OFXa-750-400.jpg"
 
+## 赞赏
+[params.rewards]
+  enable = true
+  wximg = "https://i.loli.net/2021/07/07/fhS9OH5wyjY7Mzk.png"
+  zfbimg = "https://i.loli.net/2021/07/07/MwL6SOzIPhVbYy7.png"
+
 ## 配置 utteranc评论,教程参考 https://utteranc.es/
 [params.utteranc]
   enable = true

@@ -1,0 +1,74 @@
+{{ if .Site.Params.rewards.enable}}
+
+<style>
+    .reward-box{
+        height: 60px;
+        /* background-color: pink; */
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .reward-box .reward-btn{
+        height: 35px;
+        width: 80px;
+        background-color:#ea6f5a;
+        margin-top: 10px;
+        border-radius: 20px;
+        text-align: center;
+        line-height: 35px;
+        color: white;
+        cursor: pointer;
+    }
+    .photo-box{
+        width: 360px;
+        height: 190px;
+        background-color: white;
+        position: absolute;
+        top:-190px;
+        border:1px solid #e6e6e6;
+        box-shadow: 0 1px 1px 1px #efefef;
+    }
+    .wx-box,.zfb-box{
+        float: left;
+        width: 180px;
+        height: 100%;
+    }
+    .wx-box img, .wx-box .qrcode-des{
+        padding-left: 30px;
+        padding-right: 10px;
+    }
+    .zfb-box img, .zfb-box .qrcode-des{
+        padding-left: 10px;
+        padding-right: 30px;
+    }
+    .zfb-box img,.wx-box img{
+        width: 140px;
+        height: 140px;
+        margin-top: 15px;
+    }
+    .qrcode-des{
+        text-align: center;
+    }
+</style>
+
+<div class="post-archive">
+    <div class="reward-box">
+        <div class="reward-btn">赞赏</div>
+        <div class="photo-box invisible">
+            <div class="wx-box">
+                <img src="{{.Site.Params.rewards.wximg}}" alt="">
+                <div class="qrcode-des" style="margin-top: -10px;">微信</div>
+            </div>
+            <div class="zfb-box">
+                <img src="{{.Site.Params.rewards.zfbimg}}" alt="">
+                <div class="qrcode-des" style="margin-top: -10px;">支付宝</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".reward-btn").click(function(){
+        $(".photo-box").toggleClass("invisible");
+    })
+</script>
+{{ end }}
