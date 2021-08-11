@@ -113,7 +113,8 @@
   let children = $(".post-content").eq(0).children();
   let h2s =[];
   let currentH2 = {};
-  for(let child of children){
+  for(let i=0;i<children.length;i++){
+    let child = children[i];
     if(child.tagName=="H3"){
       currentH2.h3s.push(child);
     }else if(child.tagName=="H2"){
